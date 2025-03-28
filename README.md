@@ -81,7 +81,7 @@ For more examples about customizing the graph renderer, you can refer to these e
 
 Requires [Node 22+](https://nodejs.org/) (on Mac/Linux, I recommend nvm: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash` then `nvm install node`) and Yarn (`npm install -g yarn`).
 
-The app relies on DFW, waitlist, and course offering frequency data. You can see the fake, randomized data in [app/data/](./app/data/) to see what the expected format is. To opt in to the fake data (used for public-facing demos), uncomment the first batch of `import` statements in [app/index.tsx](./app/index.tsx). If you have access to real UCSD data, continue on to the next section.
+The app relies on DFQ, waitlist, and course offering frequency data. You can see the fake, randomized data in [app/data/](./app/data/) to see what the expected format is. To opt in to the fake data (used for public-facing demos), uncomment the first batch of `import` statements in [app/index.tsx](./app/index.tsx). If you have access to real UCSD data, continue on to the next section.
 
 After setting up the required datasets, you can run `yarn dev` to start a development server.
 
@@ -97,7 +97,7 @@ The app also relies on UCSD-specific prerequisite data. This isn't protected dat
 
 ### Getting protected data (UCSD only)
 
-To get the protected DFW, waitlist, and course frequency data, you also need to clone [ExploratoryCurricularAnalytics](https://github.com/SheepTester-forks/ExploratoryCurricularAnalytics) in the same parent folder as this repository. Refer to the setup steps in that repo's README, but what's essential is that you run `make protected` (which means you need the protected data files).
+To get the protected DFQ, waitlist, and course frequency data, you also need to clone [ExploratoryCurricularAnalytics](https://github.com/SheepTester-forks/ExploratoryCurricularAnalytics) in the same parent folder as this repository. Refer to the setup steps in that repo's README, but what's essential is that you run `make protected` (which means you need the protected data files).
 
 ```shell
 $ cd ..

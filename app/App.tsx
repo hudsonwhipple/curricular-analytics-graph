@@ -24,8 +24,8 @@ export type LinkedCourse = {
 export type PrereqCache = Record<Term, Record<string, string[][]>>
 
 export type CourseStats = {
-  dfw: number | null
-  dfwForDepartment: boolean
+  dfq: number | null
+  dfqForDepartment: boolean
   equityGaps: string[]
   equityGapsForDepartment: boolean
   frequency: string[] | null
@@ -39,42 +39,42 @@ const options = {
     none: 'None',
     complexity: 'Complexity',
     bf: 'Blocking factor',
-    units: 'Units',
-    dfw: 'DFW rate',
+    units: 'Hours',
+    dfq: 'DFQ rate',
     waitlist: 'Waitlist length'
   },
   courseBallColor: {
     none: 'None',
-    flagHighDfw: 'Flag high DFW as red'
+    flagHighDfw: 'Flag high DFQ as red'
   },
   courseBallWidth: {
     none: 'None',
-    dfwThick: 'High DFW is thicker',
-    dfwThin: 'High DFW is thinner',
-    dfwFlag: 'Flag high DFW as thick',
+    dfqThick: 'High DFQ is thicker',
+    dfqThin: 'High DFQ is thinner',
+    dfqFlag: 'Flag high DFQ as thick',
     unitsThick: 'More units is thicker',
     waitlistThick: 'Longer waitlist is thicker'
   },
   lineWidth: {
     none: 'None',
-    dfwThick: 'High DFW is thicker',
-    dfwThin: 'High DFW is thinner',
-    dfwFlag: 'Flag high DFW as thick',
+    dfqThick: 'High DFQ is thicker',
+    dfqThin: 'High DFQ is thinner',
+    dfqFlag: 'Flag high DFQ as thick',
     waitlistThick: 'Longer waitlist is thicker'
   },
   lineColor: {
     none: 'None',
-    flagHighDfw: 'Flag high DFW as red'
+    flagHighDfw: 'Flag high DFQ as red'
   },
   lineDash: {
     none: 'None',
-    flagHighDfw: 'Flag high DFW as dashed line'
+    flagHighDfw: 'Flag high DFQ as dashed line'
   },
   complexityMode: {
     default: 'Same as Curricular Analytics',
-    dfw: 'Multiply course complexity by DFW rate',
-    dfwPlus1: 'Multiply course complexity by (DFW rate + 1)',
-    dfwPlus1Bf: 'Multiply blocking factors by (DFW rate + 1)'
+    dfq: 'Multiply course complexity by DFQ rate',
+    dfqPlus1: 'Multiply course complexity by (DFQ rate + 1)',
+    dfqPlus1Bf: 'Multiply blocking factors by (DFQ rate + 1)'
   },
   shapes: {
     nothing: 'Nothing',
@@ -166,7 +166,7 @@ export function App ({
   >(defaults === 'ca' ? 'none' : 'flagHighDfw')
   const [courseBallWidth, setCourseBallWidth] = useState<
     keyof typeof options['courseBallWidth']
-  >(defaults === 'ca' ? 'none' : 'dfwFlag')
+  >(defaults === 'ca' ? 'none' : 'dfqFlag')
   const [lineWidth, setLineWidth] = useState<keyof typeof options['lineWidth']>(
     defaults === 'ca' ? 'none' : 'waitlistThick'
   )
@@ -177,7 +177,7 @@ export function App ({
     useState<keyof typeof options['lineDash']>('none')
   const [complexityMode, setComplexityMode] = useState<
     keyof typeof options['complexityMode']
-  >(defaults === 'ca' ? 'default' : 'dfwPlus1Bf')
+  >(defaults === 'ca' ? 'default' : 'dfqPlus1Bf')
   const [shapes, setShapes] = useState<keyof typeof options['shapes']>(
     defaults === 'ca' ? 'nothing' : 'frequency'
   )
@@ -185,8 +185,8 @@ export function App ({
     keyof typeof options['redundantVisibility']
   >(defaults === 'ca' ? 'visible' : 'dashed')
 
-  const [dfwLdThreshold, setDfwLdThreshold] = useState('10')
-  const [dfwUdThreshold, setDfwUdThreshold] = useState('10')
+  const [dfqLdThreshold, setDfwLdThreshold] = useState('10')
+  const [dfqUdThreshold, setDfwUdThreshold] = useState('10')
   const [waitlistThreshold, setWaitlistThreshold] = useState('10')
 
   const [showWaitlistWarning, setShowWaitlistWarning] = useState(
@@ -232,8 +232,8 @@ export function App ({
       curriculum.map(course => [
         course,
         GraphUtils.blockingFactor(course, course => {
-          const { dfw } = getStats(course.name)
-          return complexityMode === 'dfwPlus1Bf' ? (dfw ?? 0) + 1 : 1
+          const { dfq } = getStats(course.name)
+          return complexityMode === 'dfqPlus1Bf' ? (dfq ?? 0) + 1 : 1
         })
       ])
     )
@@ -243,13 +243,13 @@ export function App ({
       Array.from(
         GraphUtils.complexities(blockingFactors, delayFactors, 'semester'),
         ([course, complexity]) => {
-          const { dfw } = getStats(course.name)
+          const { dfq } = getStats(course.name)
           return [
             course,
-            (complexityMode === 'dfw'
-              ? dfw ?? 0
-              : complexityMode === 'dfwPlus1'
-                ? (dfw ?? 0) + 1
+            (complexityMode === 'dfq'
+              ? dfq ?? 0
+              : complexityMode === 'dfqPlus1'
+                ? (dfq ?? 0) + 1
                 : 1) * complexity
           ]
         }
@@ -280,8 +280,8 @@ export function App ({
   }, [degreePlan])
 
   useEffect(() => {
-    const ldThreshold = +dfwLdThreshold / 100
-    const udThreshold = +dfwUdThreshold / 100
+    const ldThreshold = +dfqLdThreshold / 100
+    const udThreshold = +dfqUdThreshold / 100
     const options: GraphOptions<LinkedCourse> = {
       system: 'semester',
       termName: (_, i) =>
@@ -290,24 +290,24 @@ export function App ({
         ).padStart(2, '0')}`,
       termSummary: term => {
         const termComplexity = term.reduce((acc, { course }) => {
-          const { dfw } = getStats(course.name)
+          const { dfq } = getStats(course.name)
           const complexity = complexities.get(course)
           return (
             acc +
             (complexityMode === 'default' ||
-            dfw === null ||
+            dfq === null ||
             complexity === undefined
               ? complexity ?? 0
-              : complexityMode === 'dfw'
-                ? complexity * dfw
-                : complexity * (dfw + 1))
+              : complexityMode === 'dfq'
+                ? complexity * dfq
+                : complexity * (dfq + 1))
           )
         }, 0)
         return `Complex.: ${
           complexityMode === 'default'
             ? termComplexity
             : termComplexity.toFixed(2)
-        }\nUnits: ${term.reduce(
+        }\nHours: ${term.reduce(
           (acc, { course }) => acc + (course.credits ?? 0),
           0
         )}`
@@ -325,21 +325,21 @@ export function App ({
         )
       },
       courseNode: ({ course }) => {
-        const { dfw, waitlist } = getStats(course.name)
+        const { dfq, waitlist } = getStats(course.name)
         const complexity = complexities.get(course)
         return courseBall === 'complexity'
           ? complexityMode === 'default' || complexity === undefined
             ? String(complexity ?? '')
-            : complexityMode === 'dfw'
+            : complexityMode === 'dfq'
               ? complexity.toFixed(2)
               : complexity.toFixed(1)
           : courseBall === 'bf'
-            ? complexityMode === 'dfwPlus1Bf'
+            ? complexityMode === 'dfqPlus1Bf'
               ? blockingFactors.get(course)?.toFixed(1) ?? ''
               : String(blockingFactors.get(course))
-            : courseBall === 'dfw'
-              ? dfw !== null
-                ? (dfw * 100).toFixed(0)
+            : courseBall === 'dfq'
+              ? dfq !== null
+                ? (dfq * 100).toFixed(0)
                 : ''
               : courseBall === 'units'
                 ? String(course.credits)
@@ -350,7 +350,7 @@ export function App ({
                   : ''
       },
       styleNode: ({ element, course }) => {
-        const { dfw, waitlist, frequency } = getStats(course.name)
+        const { dfq, waitlist, frequency } = getStats(course.name)
         const threshold = isUd(course.name) ? udThreshold : ldThreshold
         element.classList.remove(styles.square, styles.triangle)
         const terms = new Set(frequency?.map(term => term.slice(0, 2)))
@@ -373,23 +373,23 @@ export function App ({
         }
         element.style.fontSize =
           (courseBall === 'complexity' && complexityMode !== 'default') ||
-          (courseBall === 'bf' && complexityMode === 'dfwPlus1Bf')
+          (courseBall === 'bf' && complexityMode === 'dfqPlus1Bf')
             ? '0.8em'
             : ''
         element.style.setProperty(
           '--border-color',
-          dfw !== null && dfw >= threshold && courseBallColor === 'flagHighDfw'
+          dfq !== null && dfq >= threshold && courseBallColor === 'flagHighDfw'
             ? '#ef4444'
             : ''
         )
         element.style.borderWidth = element.style.strokeWidth =
-          dfw !== null && courseBallWidth === 'dfwThick'
-            ? `${dfw * 30 + 1}px`
-            : dfw !== null && courseBallWidth === 'dfwThin'
-              ? `${(1 - dfw) * 5}px`
-              : dfw !== null &&
-                courseBallWidth === 'dfwFlag' &&
-                dfw >= threshold
+          dfq !== null && courseBallWidth === 'dfqThick'
+            ? `${dfq * 30 + 1}px`
+            : dfq !== null && courseBallWidth === 'dfqThin'
+              ? `${(1 - dfq) * 5}px`
+              : dfq !== null &&
+                courseBallWidth === 'dfqFlag' &&
+                dfq >= threshold
                 ? '3px'
                 : courseBallWidth === 'unitsThick'
                   ? `${course.credits}px`
@@ -402,24 +402,24 @@ export function App ({
             : ''
       },
       styleLink: ({ element, source, target, redundant }) => {
-        const { dfw, waitlist } = getStats(source.course.name)
+        const { dfq, waitlist } = getStats(source.course.name)
         const threshold = isUd(source.course.name) ? udThreshold : ldThreshold
         const linkId: LinkId = `${source.course.id}->${target.course.id}`
         element.setAttributeNS(
           null,
           'stroke',
-          dfw !== null && dfw >= threshold && lineColor === 'flagHighDfw'
+          dfq !== null && dfq >= threshold && lineColor === 'flagHighDfw'
             ? '#ef4444'
             : ''
         )
         element.setAttributeNS(
           null,
           'stroke-width',
-          dfw !== null && lineWidth === 'dfwThick'
-            ? `${dfw * 15 + 1}`
-            : dfw !== null && lineWidth === 'dfwThin'
-              ? `${(1 - dfw) * 3}`
-              : dfw !== null && lineWidth === 'dfwFlag' && dfw >= threshold
+          dfq !== null && lineWidth === 'dfqThick'
+            ? `${dfq * 15 + 1}`
+            : dfq !== null && lineWidth === 'dfqThin'
+              ? `${(1 - dfq) * 3}`
+              : dfq !== null && lineWidth === 'dfqFlag' && dfq >= threshold
                 ? '3'
                 : waitlist !== null && lineWidth === 'waitlistThick'
                   ? `${waitlist / 4 + 1}`
@@ -428,7 +428,7 @@ export function App ({
         element.setAttributeNS(
           null,
           'stroke-dasharray',
-          (dfw !== null && dfw >= threshold && lineDash === 'flagHighDfw') ||
+          (dfq !== null && dfq >= threshold && lineDash === 'flagHighDfw') ||
             (redundant && redundantVisibility === 'dashed')
             ? '5 5'
             : ''
@@ -503,8 +503,8 @@ export function App ({
       },
       tooltipContent: ({ course, centrality }) => {
         const {
-          dfw,
-          dfwForDepartment,
+          dfq,
+          dfqForDepartment,
           equityGaps,
           equityGapsForDepartment,
           frequency,
@@ -512,26 +512,26 @@ export function App ({
         } = getStats(course.name)
         const complexity = complexities.get(course)
         return [
-          ['Units', String(course.credits)],
+          ['Hours', String(course.credits)],
           [
             'Complexity',
             complexityMode === 'default' || complexity === undefined
               ? String(complexity ?? '')
-              : complexityMode === 'dfw'
+              : complexityMode === 'dfq'
                 ? complexity.toFixed(2)
                 : complexity.toFixed(1)
           ],
           ['Centrality', String(centrality)],
           [
             'Blocking factor',
-            complexityMode === 'dfwPlus1Bf'
+            complexityMode === 'dfqPlus1Bf'
               ? blockingFactors.get(course)?.toFixed(2) ?? ''
               : String(blockingFactors.get(course))
           ],
           ['Delay factor', String(delayFactors.get(course) ?? 1)],
           [
-            'DFW rate' + (dfwForDepartment ? '*' : ''),
-            dfw !== null ? `${(dfw * 100).toFixed(1)}%` : 'N/A'
+            'DFQ rate' + (dfqForDepartment ? '*' : ''),
+            dfq !== null ? `${(dfq * 100).toFixed(1)}%` : 'N/A'
           ],
           [
             'Equity gaps' + (equityGapsForDepartment ? '*' : ''),
@@ -557,11 +557,11 @@ export function App ({
             })
           )
         }
-        const { dfw, dfwForDepartment } = getStats(source.course.name)
+        const { dfq, dfqForDepartment } = getStats(source.course.name)
         element.children[0].textContent = source.course.name
         element.children[1].textContent =
-          dfw !== null
-            ? `${dfwForDepartment ? '*' : ''}${(dfw * 100).toFixed(1)}% DFW`
+          dfq !== null
+            ? `${dfqForDepartment ? '*' : ''}${(dfq * 100).toFixed(1)}% DFQ`
             : ''
       }
     }
@@ -579,8 +579,8 @@ export function App ({
     lineDash,
     complexityMode,
     shapes,
-    dfwLdThreshold,
-    dfwUdThreshold,
+    dfqLdThreshold,
+    dfqUdThreshold,
     waitlistThreshold,
     showWaitlistWarning,
     showEquityGaps,
@@ -602,8 +602,8 @@ export function App ({
                   The number indicates the course's{' '}
                   {courseBall === 'bf'
                     ? 'blocking factor'
-                    : courseBall === 'dfw'
-                      ? 'DFW rate'
+                    : courseBall === 'dfq'
+                      ? 'DFQ rate'
                       : courseBall === 'waitlist'
                         ? 'waitlist length'
                         : courseBall}
@@ -691,7 +691,7 @@ export function App ({
                       className={styles.line}
                       style={{ backgroundColor: 'red', height: '3px' }}
                     />
-                    Prerequisite has high DFW
+                    Prerequisite has high DFQ
                   </p>
                   <p>⏳ Long waitlist</p>
                   <p>⚠️ Equity gap</p>
@@ -712,7 +712,7 @@ export function App ({
           )}
           <p>Data were sampled between fall 2021 and spring 2024.</p>
           {panelMode.majorDfwNote ? (
-            <p>*DFW rate is specific to majors in this department.</p>
+            <p>*DFQ rate is specific to majors in this department.</p>
           ) : null}
           {panelMode.options && (
             <details open={!panelMode.key}>
@@ -746,18 +746,18 @@ export function App ({
                   Course node number
                 </Dropdown>
                 <TextField
-                  value={dfwLdThreshold}
+                  value={dfqLdThreshold}
                   onChange={setDfwLdThreshold}
                   numeric
                 >
-                  Minimum DFW considered "high" for LD courses (%)
+                  Minimum DFQ considered "high" for LD courses (%)
                 </TextField>
                 <TextField
-                  value={dfwUdThreshold}
+                  value={dfqUdThreshold}
                   onChange={setDfwUdThreshold}
                   numeric
                 >
-                  Minimum DFW considered "high" for UD courses (%)
+                  Minimum DFQ considered "high" for UD courses (%)
                 </TextField>
                 <Dropdown
                   options={options.courseBallColor}

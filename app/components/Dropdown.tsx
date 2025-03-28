@@ -33,6 +33,7 @@ export function Dropdown<Options extends {}> ({
     <label className={styles.wrapper}>
       <span className={styles.label}>{children}</span>
       <select
+        className={styles.select}
         value={String(value)}
         onChange={e => {
           if (keyIn(options, e.currentTarget.value)) {

@@ -1,8 +1,8 @@
 /**
  * URL parameter documentation
  *
- * - `major`: The first two characters are used to look up major-specific DFW
- *   rates in `dfwRatesByMajor`.
+ * - `major`: The first two characters are used to look up major-specific DFQ
+ *   rates in `dfqRatesByMajor`.
  * - `defaults`: Either `ca` (for Curricular Analytics, which should match their
  *   original visualization) or `ucsd` (Carlos' preferred defaults).
  * - `hide-panel`: Whether to hide the side panel.
@@ -16,18 +16,18 @@ import { createRoot } from 'react-dom/client'
 import { App, CourseStats } from './App'
 import { csvStringToDegreePlan } from './util/parse-degree-plan'
 
-/*
-import dfwRatesByMajor from './data/fake-dfw-by-major.json'
+///*
+import dfqRatesByMajor from './data/fake-dfq-by-major.json'
 import frequencies from './data/fake-frequency.json'
 import waitlists from './data/fake-waitlist.json'
 const equityGapsByMajor = { PHYS2CL: { allMajors: 'firstGen urm' } }
 const realData = false
-/*/
-import dfwRatesByMajor from '../../ExploratoryCurricularAnalytics/files/protected/summarize_dfw_by_major.json'
-import frequencies from '../../ExploratoryCurricularAnalytics/files/protected/summarize_frequency.json'
-import waitlists from '../../ExploratoryCurricularAnalytics/files/protected/summarize_waitlist.json'
-import equityGapsByMajor from '../../ExploratoryCurricularAnalytics/files/protected/summarize_equity_by_major.json'
-const realData = true
+//*/
+// import dfqRatesByMajor from '../../ExploratoryCurricularAnalytics/files/protected/summarize_dfq_by_major.json'
+// import frequencies from '../../ExploratoryCurricularAnalytics/files/protected/summarize_frequency.json'
+// import waitlists from '../../ExploratoryCurricularAnalytics/files/protected/summarize_waitlist.json'
+// import equityGapsByMajor from '../../ExploratoryCurricularAnalytics/files/protected/summarize_equity_by_major.json'
+// const realData = true
 //*/
 
 // https://curricularanalytics.org/degree_plans/11085
@@ -53,15 +53,15 @@ type CourseDfwRates = {
 function getStats (courseName: string): CourseStats {
   const match = courseName.toUpperCase().match(/([A-Z]+) *(\d+[A-Z]*)/)
   const courseCode = match ? match[1] + match[2] : ''
-  const dfwRates = (dfwRatesByMajor as Record<string, CourseDfwRates>)[
+  const dfqRates = (dfqRatesByMajor as Record<string, CourseDfwRates>)[
     courseCode
   ]
   const equityGaps = (
     equityGapsByMajor as Record<string, Record<string, string>>
   )[courseCode]
   return {
-    dfw: dfwRates?.[majorSubject] ?? dfwRates?.allMajors ?? null,
-    dfwForDepartment: dfwRates?.[majorSubject] !== undefined,
+    dfq: dfqRates?.[majorSubject] ?? dfqRates?.allMajors ?? null,
+    dfqForDepartment: dfqRates?.[majorSubject] !== undefined,
     equityGaps:
       equityGaps?.[majorSubject] !== undefined
         ? equityGaps[majorSubject]

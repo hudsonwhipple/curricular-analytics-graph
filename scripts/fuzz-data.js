@@ -13,12 +13,12 @@ function fuzz (data, mapFn = n => n) {
 }
 
 await writeFile(
-  './app/data/fuzzed-dfw.json',
+  './app/data/fuzzed-dfq.json',
   JSON.stringify(
     fuzz(
       JSON.parse(
         await readFile(
-          '../ExploratoryCurricularAnalytics/files/protected/summarize_dfw.json',
+          '../ExploratoryCurricularAnalytics/files/protected/summarize_dfq.json',
           'utf-8'
         )
       )

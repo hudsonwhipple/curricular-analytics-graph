@@ -5,3 +5,11 @@
   display: block;
   font-weight: bold;
 }
+
+.select {
+  background-color: 29th#873d00; /* Dark orange */
+  color: #f1f5f9; /* Light text for contrast */
+  border: 1px solid #f1f5f9; /* Optional: border color */
+  padding: 5px; /* Optional: spacing inside the dropdown */
+  border-radius: 4px; /* Optional: rounded corners */
+}
