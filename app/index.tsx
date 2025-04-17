@@ -17,7 +17,8 @@ import { App, CourseStats } from './App'
 import { csvStringToDegreePlan } from './util/parse-degree-plan'
 
 ///*
-import dfqRatesByMajor from './data/fake-dfq-by-major.json'
+// import dfqRatesByMajor from './data/fake-dfq-by-major.json'
+import dfqRatesByMajor from './data/ut-coursename-dfq-by-major.json'
 import frequencies from './data/fake-frequency.json'
 import waitlists from './data/fake-waitlist.json'
 const equityGapsByMajor = { PHYS2CL: { allMajors: 'firstGen urm' } }
@@ -33,7 +34,8 @@ const realData = false
 // https://curricularanalytics.org/degree_plans/11085
 // import example from './data/example.json'
 // https://curricularanalytics.org/degree_plans/25144
-import example from './data/SY-Degree Plan-Eighth-EC27.csv'
+// import example from './data/SY-Degree Plan-Eighth-EC27.csv'
+import example from './data/BA_in_Economics.csv'
 // https://curricularanalytics.org/degree_plans/25403
 // import example from './data/EC27.json'
 
@@ -53,9 +55,10 @@ type CourseDfwRates = {
 function getStats (courseName: string): CourseStats {
   const match = courseName.toUpperCase().match(/([A-Z]+) *(\d+[A-Z]*)/)
   const courseCode = match ? match[1] + match[2] : ''
-  const dfqRates = (dfqRatesByMajor as Record<string, CourseDfwRates>)[
-    courseCode
-  ]
+  // const dfqRates = (dfqRatesByMajor as Record<string, CourseDfwRates>)[
+  //   courseCode
+  // ]
+  const dfqRates = (dfqRatesByMajor as Record<string, CourseDfwRates>)[courseName]
   const equityGaps = (
     equityGapsByMajor as Record<string, Record<string, string>>
   )[courseCode]
@@ -81,7 +84,7 @@ createRoot(document.getElementById('root')!).render(
     <App
       initDegreePlan={degreePlan}
       initReqTypes={reqTypes}
-      getStats={getStats}
+      getStats={(courseName: string) => getStats(courseName)} // Pass prefix and number
       defaults={params.get('defaults') ?? ''}
       panelMode={
         params.has('hide-panel')

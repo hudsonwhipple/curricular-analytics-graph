@@ -13,7 +13,7 @@ import { updatePrereqs } from './util/updatePrereqs'
 export type LinkedCourse = {
   /** 0-indexed */
   year: number
-  quarter: 'FA' | 'WI' | 'SP'
+  quarter: 'FA' | 'SP'
   id: number
   name: string
   credits: number
@@ -105,10 +105,9 @@ function interpretFrequency (terms: string[]): string {
   const summer = quarters.includes('S1') || quarters.includes('S2')
   const regular = [
     quarters.includes('FA') ? 'Fall' : '',
-    quarters.includes('WI') ? 'Winter' : '',
     quarters.includes('SP') ? 'Spring' : ''
   ].filter(quarter => quarter)
-  if (regular.length === 3) {
+  if (regular.length === 2) {
     return summer ? 'Year-round (incl. summer)' : 'Regular year (no summer)'
   } else {
     if (summer) {
@@ -134,7 +133,7 @@ export type AppProps = {
   initDegreePlan: LinkedCourse[][]
   initReqTypes: Record<LinkId, RequisiteType>
   getStats(courseName: string): CourseStats
-  defaults?: 'ca' | 'ucsd' | (string & {})
+  defaults?: 'ca' | 'ut austin' | (string & {})
   panelMode?: {
     title?: string
     key?: boolean
@@ -285,8 +284,8 @@ export function App ({
     const options: GraphOptions<LinkedCourse> = {
       system: 'semester',
       termName: (_, i) =>
-        `${['Fall', 'Winter', 'Spring'][i % 3]} '${String(
-          (year + Math.floor((i + 2) / 3)) % 100
+        `${['Fall', 'Spring'][i % 2]} '${String(
+          (year + Math.floor((i + 1) / 2)) % 100
         ).padStart(2, '0')}`,
       termSummary: term => {
         const termComplexity = term.reduce((acc, { course }) => {

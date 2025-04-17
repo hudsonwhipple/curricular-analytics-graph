@@ -1,0 +1,383 @@
+{
+    "Fundamentals of Financial Accounting": {
+        "allMajors": 0.15572755417956657
+    },
+    "ACC 311H": {
+        "allMajors": 0.0038314176245210726
+    },
+    "Fundamentals of Managerial Accounting": {
+        "allMajors": 0.12111581920903955
+    },
+    "ACC 312H": {
+        "allMajors": 0.007751937984496124
+    },
+    "Professional Development and Career Planning II": {
+        "allMajors": 0.010398613518197574
+    },
+    "Business Communication: Oral and Written": {
+        "allMajors": 0.017851346965271016
+    },
+    "B A 324H": {
+        "allMajors": 0.0017953321364452424
+    },
+    "Foundations of Biochemistry": {
+        "allMajors": 0.11150758251561106
+    },
+    "Physical Methods of Biochemistry": {
+        "allMajors": 0.046511627906976744
+    },
+    "Introductory Biology I": {
+        "allMajors": 0.059334845049130766
+    },
+    "C S 303E": {
+        "allMajors": 0.20624370594159114
+    },
+    "C S 313E": {
+        "allMajors": 0.1272264631043257
+    },
+    "C S 327E": {
+        "allMajors": 0.019693654266958426
+    },
+    "Physical Chemistry Laboratory": {
+        "allMajors": 0.029451137884872823
+    },
+    "Physical Chemistry Laboratory II": {
+        "allMajors": 0.029411764705882353
+    },
+    "Organic Chemistry Laboratory": {
+        "allMajors": 0.04086021505376344
+    },
+    "Foundations of Chemistry II ": {
+        "allMajors": 0.016835016835016835
+    },
+    "Descriptive Inorganic Chemistry": {
+        "allMajors": 0.07228915662650602
+    },
+    "Organic Chemistry I": {
+        "allMajors": 0.2099117060666477
+    },
+    "Organic Chemistry II": {
+        "allMajors": 0.19360749185667753
+    },
+    "Physical Chemistry I": {
+        "allMajors": 0.1872852233676976
+    },
+    "CH 353M": {
+        "allMajors": 0.08057851239669421
+    },
+    "Quantum Chemistry and Spectroscopy": {
+        "allMajors": 0.18376068376068377
+    },
+    "CH 354C": {
+        "allMajors": 0.0
+    },
+    "CH 354M": {
+        "allMajors": 0.05357142857142857
+    },
+    "CH 354S": {
+        "allMajors": 0.06451612903225806
+    },
+    "Advanced Analytical Chemistry": {
+        "allMajors": 0.04580152671755725
+    },
+    "Capstone Research and Thesis ": {
+        "allMajors": 0.0
+    },
+    "Analytical Chemistry": {
+        "allMajors": 0.06535947712418301
+    },
+    "Introduction to Decision Science": {
+        "allMajors": 0.03330161750713606
+    },
+    "D S 235H": {
+        "allMajors": 0.003883495145631068
+    },
+    "Literature": {
+        "allMajors": 0.06551780198341730
+    },
+    "E 316L": {
+        "allMajors": 0.07973014412756824
+    },
+    "American Literature": {
+        "allMajors": 0.058095669231929985
+    },
+    "E 316N": {
+        "allMajors": 0.06669428334714167
+    },
+    "Introduction to Electrical Engineering": {
+        "allMajors": 0.08250355618776671
+    },
+    "ECE 302H": {
+        "allMajors": 0.029197080291970802
+    },
+    "Introduction to Computing": {
+        "allMajors": 0.09371554575523705
+    },
+    "Software Design and Implementation I": {
+        "allMajors": 0.26306620209059234
+    },
+    "ECE 312H": {
+        "allMajors": 0.0825242718446602
+    },
+    "Linear Systems and Signals": {
+        "allMajors": 0.12181303116147309
+    },
+    "Introduction to Embedded Systems": {
+        "allMajors": 0.14106583072100312
+    },
+    "Engineering Communication": {
+        "allMajors": 0.01948051948051948
+    },
+    "Probability and Random Processes": {
+        "allMajors": 0.13392857142857142
+    },
+    "Introduction to Engineering Design": {
+        "allMajors": 0.004545454545454545
+    },
+    "Circuit Theory": {
+        "allMajors": 0.13517060367454067
+    },
+    "ECE 411H": {
+        "allMajors": 0.09859154929577464
+    },
+    "Professional Development and Career Planning": {
+        "allMajors": 0.009962640099626401
+    },
+    "Introduction to Microeonomics": {
+        "allMajors": 0.10098204543200079
+    },
+    "Introduction to Macroeconomics": {
+        "allMajors": 0.10480182926829268
+    },
+    "Macroeconomic Theory": {
+        "allMajors": 0.08105726872246696
+    },
+    "Economic Statistics": {
+        "allMajors": 0.11639676113360324
+    },
+    "Microeconomic Theory": {
+        "allMajors": 0.171990171990172
+    },
+    "Introduction to Econometrics": {
+        "allMajors": 0.08675184936112978
+    },
+    "Business Finance": {
+        "allMajors": 0.15547703180212014
+    },
+    "FIN 357H": {
+        "allMajors": 0.029953917050691243
+    },
+    "American and Texas Government": {
+        "allMajors": 0.07562299531211449
+    },
+    "Issues and Policies in American Government": {
+        "allMajors": 0.09964332219894695
+    },
+    "U.S. History (Core)": {
+        "allMajors": 0.04782333497433010
+    },
+    "HIS 315G": {
+        "allMajors": 0.060655737704918035
+    },
+    "HIS 315K": {
+        "allMajors": 0.042066819964831595
+    },
+    "HIS 315L": {
+        "allMajors": 0.05262219051016768
+    },
+    "Business Law and Ethics": {
+        "allMajors": 0.08135593220338982
+    },
+    "LEB 323H": {
+        "allMajors": 0.004464285714285714
+    },
+    "Matrices and Matrix Calculations": {
+        "allMajors": 0.10996470268802606
+    },
+    "Differential and Integral Calculus": {
+        "allMajors": 0.14420509168595336
+    },
+    "Sequences, Series, and Multivariable Calculus": {
+        "allMajors": 0.09387701586469123
+    },
+    "Differential Calculus": {
+        "allMajors": 0.11804511278195488
+    },
+    "Differential and Integral Calculus for Busines": {
+        "allMajors": 0.041271989174560215
+    },
+    "Leadership Challenges and Innovation": {
+        "allMajors": 0.0037397157816005983
+    },
+    "Organizational Behavior": {
+        "allMajors": 0.02112457284871078
+    },
+    "MAN 336H": {
+        "allMajors": 0.009876543209876543
+    },
+    "Introduction to Information Technology Management": {
+        "allMajors": 0.027156549520766772
+    },
+    "MIS 301H": {
+        "allMajors": 0.003968253968253968
+    },
+    "Principles of Marketing": {
+        "allMajors": 0.02712912087912088
+    },
+    "MKT 337H": {
+        "allMajors": 0.011682242990654205
+    },
+    "MKT 337N": {
+        "allMajors": 0.0
+    },
+    "Information and Analysis": {
+        "allMajors": 0.030303030303030304
+    },
+    "Marketing Policies": {
+        "allMajors": 0.013888888888888888
+    },
+    "Beginning Music Performance": {
+        "allMajors": 0.09243697478991597
+    },
+    "Beginning Music Performance: Second-Semester Class Piano": {
+        "allMajors": 0.09401709401709402
+    },
+    "History of Music I": {
+        "allMajors": 0.10504201680672269
+    },
+    "History of Music II": {
+        "allMajors": 0.1134453781512605
+    },
+    "History of Music III": {
+        "allMajors": 0.043859649122807015
+    },
+    "Music and Culture": {
+        "allMajors": 0.050445103857566766
+    },
+    "Ear Training and Sight-Singing": {
+        "allMajors": 0.1180722891566265
+    },
+    "Ear Training and Sight-Singing II": {
+        "allMajors": 0.1100244498777506
+    },
+    "Musicianship": {
+        "allMajors": 0.06751054852320675
+    },
+    "Musicianship II": {
+        "allMajors": 0.03740648379052369
+    },
+    "Structure of Tonal Music": {
+        "allMajors": 0.11612903225806452
+    },
+    "Structure of Tonal Music II": {
+        "allMajors": 0.03631961259079903
+    },
+    "Operations Management": {
+        "allMajors": 0.0999677523379555
+    },
+    "O M 235H": {
+        "allMajors": 0.042748091603053436
+    },
+    "Laboratory for Physics 301": {
+        "allMajors": 0.043327556325823226
+    },
+    "Laboratory For Physics 302L, 303L, and 317L": {
+        "allMajors": 0.02765675317294942
+    },
+    "Laboratory for Physics 316": {
+        "allMajors": 0.05895691609977324
+    },
+    "Mechanics": {
+        "allMajors": 0.21393034825870647
+    },
+    "Engineering Physics I": {
+        "allMajors": 0.10061668289516391
+    },
+    "Engineering Physics II": {
+        "allMajors": 0.09346914319952067
+    },
+    "Electricity and Magnetism": {
+        "allMajors": 0.08541666666666667
+    },
+    "Introduction to Psychology": {
+        "allMajors": 0.1599433828733192
+    },
+    "Introduction to Child Psychology": {
+        "allMajors": 0.02880658436213992
+    },
+    "Rhetoric and Writing": {
+        "allMajors": 0.06906745498521903
+    },
+    "Introduction to Social Work and Social Welfare": {
+        "allMajors": 0.04656862745098039
+    },
+    "Generalist Social Work Practice: Knowledge, Values, and Skills": {
+        "allMajors": 0.02877697841726619
+    },
+    "Social Work Research Methods": {
+        "allMajors": 0.02834008097165992
+    },
+    "Social Work Statistics": {
+        "allMajors": 0.049586776859504134
+    },
+    "Social Welfare Programs, Policies, and Issues": {
+        "allMajors": 0.03225806451612903
+    },
+    "Foundations of Social Justice": {
+        "allMajors": 0.04059539918809202
+    },
+    "Human Behavior and Social Environment": {
+        "allMajors": 0.04722222222222222
+    },
+    "Social Work Practice with Individuals and Families": {
+        "allMajors": 0.024096385542168676
+    },
+    "Social Work Practice with Groups": {
+        "allMajors": 0.024096385542168676
+    },
+    "Social Work Practice in Organizations and Communities": {
+        "allMajors": 0.02066115702479339
+    },
+    "Social Work Applied Practice": {
+        "allMajors": 0.0
+    },
+    "SDS 313": {
+        "allMajors": 0.016574585635359115
+    },
+    "SDS 315": {
+        "allMajors": 0.017543859649122806
+    },
+    "SDS 431": {
+        "allMajors": 0.0
+    },
+    "SPN 311": {
+        "allMajors": 0.06109865470852018
+    },
+    "SPN 311J": {
+        "allMajors": 0.041343669250646
+    },
+    "First-Year Spanish 1": {
+        "allMajors": 0.08115358819584172
+    },
+    "First Year Spanish 2": {
+        "allMajors": 0.06395595086827616
+    },
+    "Data Science for Business Applications": {
+        "allMajors": 0.1192136968928345
+    },
+    "STA 235H": {
+        "allMajors": 0.017077798861480076
+    },
+    "Introduction to Data Science": {
+        "allMajors": 0.06432270373398746
+    },
+    "STA 301H": {
+        "allMajors": 0.007067137809187279
+    },
+    "First-Year Signature Course": {
+        "allMajors": 0.018368067820558106
+    },
+    "UGS 303": {
+        "allMajors": 0.02724827056110684
+    }
+}
